@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>igor orlef 4i</title>
+  </head>
+  <body>
+    <main>
+      <label for="tekst1"
+        >wprowadz tekst: <input type="text" id="tekst1"
+      /></label>
+      <label for="tekst2"
+        >wprowadz tekst: <input type="text" id="tekst2"
+      /></label>
+      <button id="palindrom">palindrom?</button>
+      <button id="ile_znakow">ile znaków?</button>
+      <button id="ile_samoglosek">ile samoglosek?</button>
+      <button id="czy_zawiera">czy zawiera?</button>
+      <button id="zamien_znaki">zamień znaki?</button>
+    </main>
+    <section>
+      <p id="display"></p>
+    </section>
+    <script>
+      const tekst2 = document.getElementById("tekst2");
+      const palindrom = document.querySelector("#palindrom");
+      const ile_znakow = document.querySelector("#ile_znakow");
+      const zamien_znaki = document.querySelector("#zamien_znaki");
+      const ile_samoglosek = document.querySelector("#ile_samoglosek");
+      const czy_zawiera = document.querySelector("#czy_zawiera");
+      const display = document.querySelector("#display");
+
+      function fnpalindrom() {
+        const tekst1 = document.getElementById("tekst1");
+        const dl = tekst1.value.length;
+        let zm = dl;
+        if (dl % 2 != 0) {
+          zm = dl - 1;
+        }
+
+        for (let i = 0; i < zm / 2; i++) {
+          if (tekst1.value.charAt(i) != tekst1.value.charAt(dl - (i + 1))) {
+            display.innerHTML += "nie palindrom";
+
+            break;
+          }
+          if (i+1 == zm / 2) {
+            display.innerHTML += "palindrom";
+
+            break;
+          }
+        }
+      }
+
+      function fnilez(){
+
+        const dl = tekst1.value.length;
+        display.innerHTML += "liczba znakow:";
+        display.innerHTML += dl;
+
+      }
+
+      palindrom.addEventListener("click", fnpalindrom);
+      ile_znakow.addEventListener("click", fnilez);
+    </script>
+  </body>
+</html>
